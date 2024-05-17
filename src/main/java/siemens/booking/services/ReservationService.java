@@ -1,7 +1,7 @@
 package siemens.booking.services;
 
-import siemens.booking.dto.requests.SaveReservationRequest;
+import siemens.booking.entity.Reservation;
 
 public interface ReservationService {
-    long save(SaveReservationRequest request);
+    Reservation save(Reservation reservation);
 }

@@ -7,8 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import siemens.booking.entity.Hotel;
-import siemens.booking.entity.Reservation;
+import siemens.booking.model.Room;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -19,12 +19,10 @@ import java.util.List;
 @Setter
 @EqualsAndHashCode
 @ToString
-public class ReservationDto {
+public class HotelDto {
     private Long id;
-    private int type;
-    private int number;
-    private BigDecimal price;
-    private boolean isAvailable;
-    private Hotel hotel;
-    private List<Reservation> reservations;
+    private String name;
+    private BigDecimal latitude;
+    private BigDecimal longitude;
+    private List<Room> rooms;
 }

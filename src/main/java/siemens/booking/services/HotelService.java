@@ -1,12 +1,8 @@
 package siemens.booking.services;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import siemens.booking.repository.HotelRepository;
+import siemens.booking.entity.Hotel;
 
-@Service
-@RequiredArgsConstructor
-public class HotelService {
-    private final HotelRepository hotelRepository;
 
+public interface HotelService {
+    Hotel save(Hotel hotel);
 }
