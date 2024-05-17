@@ -1,4 +1,4 @@
-package siemens.booking.enums;
+package siemens.booking.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -12,8 +12,6 @@ public enum RoomType {
     MATRIMONIAL(4);
 
     private final int value;
-
-
 
     public static RoomType valueOf(int value) {
         for (RoomType roomType : RoomType.values()) {

@@ -2,7 +2,7 @@ package siemens.booking;
 
 import siemens.booking.entity.Hotel;
 import siemens.booking.entity.Room;
-import siemens.booking.enums.RoomType;
+import siemens.booking.model.RoomType;
 
 import java.math.BigDecimal;
 

@@ -14,7 +14,7 @@ import org.json.*;
 import org.springframework.stereotype.Component;
 import siemens.booking.entity.Hotel;
 import siemens.booking.entity.Room;
-import siemens.booking.enums.RoomType;
+import siemens.booking.model.RoomType;
 
 @Component
 @RequiredArgsConstructor
