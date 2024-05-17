@@ -9,5 +9,8 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
+
 public class Feedback {
+    private Long id;
+
 }

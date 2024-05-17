@@ -15,4 +15,13 @@ public enum RoomType {
     public int getValue() {
         return value;
     }
+
+    public static RoomType valueOf(int value) {
+        for (RoomType roomType : RoomType.values()) {
+            if (roomType.getValue() == value) {
+                return roomType;
+            }
+        }
+        throw new IllegalArgumentException("Invalid RoomType value: " + value);
+    }
 }
