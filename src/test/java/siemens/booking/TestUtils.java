@@ -1,7 +1,7 @@
 package siemens.booking;
 
-import siemens.booking.domain.Hotel;
-import siemens.booking.domain.Room;
+import siemens.booking.entity.Hotel;
+import siemens.booking.entity.Room;
 import siemens.booking.enums.RoomType;
 
 import java.math.BigDecimal;
@@ -37,8 +37,8 @@ public class TestUtils {
     public static Room createTestRoomA(Hotel hotel){
         return Room.builder()
                 .id(1L)
-                .roomNumber(101)
-                .roomType(RoomType.SINGLE)
+                .number(101)
+                .type(RoomType.SINGLE.getValue())
                 .price(new BigDecimal("100.00"))
                 .isAvailable(true)
                 .hotel(hotel)
@@ -48,8 +48,8 @@ public class TestUtils {
     public static Room createTestRoomB(Hotel hotel){
         return Room.builder()
                 .id(2L)
-                .roomNumber(102)
-                .roomType(RoomType.DOUBLE)
+                .number(102)
+                .type(RoomType.DOUBLE.getValue())
                 .price(new BigDecimal("200.00"))
                 .isAvailable(true)
                 .hotel(hotel)
@@ -59,8 +59,8 @@ public class TestUtils {
     public static Room createTestRoomC(Hotel hotel){
         return Room.builder()
                 .id(3L)
-                .roomNumber(103)
-                .roomType(RoomType.SUITE)
+                .number(103)
+                .type(RoomType.SUITE.getValue())
                 .price(new BigDecimal("300.00"))
                 .isAvailable(true)
                 .hotel(hotel)

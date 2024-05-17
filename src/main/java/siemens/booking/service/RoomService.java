@@ -1,16 +1,18 @@
 package siemens.booking.service;
 
 import org.springframework.stereotype.Service;
-import siemens.booking.domain.Room;
-import siemens.booking.repos.HotelRepo;
-import siemens.booking.repos.RoomRepo;
+import siemens.booking.entity.Room;
+import siemens.booking.repository.RoomRepository;
 
 @Service
 public class RoomService {
-    private RoomRepo roomRepo;
+    private RoomRepository roomRepo;
+
+    public RoomService(RoomRepository roomRepo) {
+        this.roomRepo = roomRepo;
+    }
 
     public RoomService() {
-
     }
 
     public void saveRoom(Room room){

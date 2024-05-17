@@ -7,10 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import siemens.booking.TestUtils;
-import siemens.booking.domain.Hotel;
-import siemens.booking.domain.Room;
+import siemens.booking.entity.Hotel;
+import siemens.booking.entity.Room;
 import siemens.booking.enums.RoomType;
-import siemens.booking.repos.RoomRepo;
+import siemens.booking.repository.RoomRepository;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -21,10 +21,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class RoomRepoIT {
-    private RoomRepo roomRepo;
+    private RoomRepository roomRepo;
 
     @Autowired
-    public RoomRepoIT(RoomRepo roomRepo) {
+    public RoomRepoIT(RoomRepository roomRepo) {
         this.roomRepo = roomRepo;
     }
 
@@ -70,8 +70,8 @@ public class RoomRepoIT {
         Hotel hotel = TestUtils.createTestHotelA();
         Room room = TestUtils.createTestRoomA(hotel);
         roomRepo.save(room);
-        room.setRoomNumber(102);
-        room.setRoomType(RoomType.DOUBLE);
+        room.setNumber(102);
+        room.setType(RoomType.DOUBLE.getValue());
         room.setPrice(new BigDecimal("200.00"));
         room.setAvailable(true);
         roomRepo.save(room);

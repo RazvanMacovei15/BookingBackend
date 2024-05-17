@@ -1,4 +1,4 @@
-package siemens.booking.domain;
+package siemens.booking.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,17 +13,16 @@ import java.util.Objects;
 @Setter
 
 @Entity
-@Table(name = "hotels")
+@Table(name = "HOTELS")
 public class Hotel {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hotel_id_seq")
     private Long id;
     private String name;
     @Column(nullable = false, precision = 10, scale = 8)
     private BigDecimal latitude;
     @Column(nullable = false, precision = 10, scale = 8)
     private BigDecimal longitude;
-    @Transient
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Room> rooms;
 
     public void addRoom(Room room) {

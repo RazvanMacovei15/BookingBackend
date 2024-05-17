@@ -1,4 +1,4 @@
-package siemens.booking.domain;
+package siemens.booking.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

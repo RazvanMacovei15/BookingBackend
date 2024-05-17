@@ -1,9 +1,7 @@
-package siemens.booking.domain;
+package siemens.booking.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
-import siemens.booking.enums.RoomType;
 
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -17,14 +15,18 @@ import java.util.Objects;
 @Table(name = "rooms")
 public class Room {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "room_id_seq")
     private Long id;
-    private RoomType roomType;
-    private int roomNumber;
-    @Column(nullable = false, precision = 5, scale = 2)
+    @Column(name = "type")
+    private int type;
+    @Column(name = "number")
+    private int number;
+    @Column(nullable = false, precision = 5, scale = 2, name = "price" )
     private BigDecimal price;
+    @Column(name = "isAvailable")
     private boolean isAvailable;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "hotel_id")
+    @ManyToOne
+    @JoinColumn(name = "hotelId")
     private Hotel hotel;
 
     @Override
@@ -44,7 +46,7 @@ public class Room {
     public String toString() {
         return "Room{" +
                 "id=" + id +
-                ", roomNumber=" + roomNumber +
+                ", roomNumber=" + number +
                 ", price=" + price +
                 ", isAvailable=" + isAvailable +
                 ", hotel=" + hotel +

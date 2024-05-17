@@ -1,14 +1,25 @@
 package siemens.booking.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import siemens.booking.domain.Hotel;
-import siemens.booking.repos.HotelRepo;
+import siemens.booking.dto.requests.SaveHotelRequest;
+import siemens.booking.entity.Hotel;
+import siemens.booking.repository.HotelRepository;
 
 @Service
+@RequiredArgsConstructor
 public class HotelService {
-    private HotelRepo hotelRepo;
+    private final HotelRepository hotelRepository;
 
-    public void saveHotel(Hotel hotel){
-        hotelRepo.save(hotel);
+    public long save(SaveHotelRequest request) {
+        Hotel hotel = Hotel.builder()
+                .id(request.getId())
+                .name(request.getName())
+                .longitude(request.getLongitude())
+                .latitude(request.getLatitude())
+                .build();
+
+        Hotel savedHotel = hotelRepository.save(hotel);
+        return savedHotel.getId();
     }
 }

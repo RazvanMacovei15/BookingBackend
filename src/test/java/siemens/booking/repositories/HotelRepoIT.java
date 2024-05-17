@@ -7,8 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import siemens.booking.TestUtils;
-import siemens.booking.domain.Hotel;
-import siemens.booking.repos.HotelRepo;
+import siemens.booking.entity.Hotel;
+import siemens.booking.repository.HotelRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,11 +19,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class HotelRepoIT {
-    private HotelRepo hotelRepo;
+    private HotelRepository hotelRepo;
 
 
     @Autowired
-    public HotelRepoIT(HotelRepo hotelRepo) {
+    public HotelRepoIT(HotelRepository hotelRepo) {
         this.hotelRepo = hotelRepo;
     }
 
