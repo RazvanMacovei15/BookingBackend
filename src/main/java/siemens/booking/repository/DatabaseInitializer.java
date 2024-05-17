@@ -1,17 +1,14 @@
 package siemens.booking.repository;
-
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
-
-
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.json.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 import siemens.booking.entity.Hotel;
 import siemens.booking.entity.Room;
@@ -23,8 +20,6 @@ public class DatabaseInitializer {
     private static final String JSON_DATABASE = "src/main/resources/static/hotels.json";
 
     private final HotelRepository hotelRepo;
-
-    private final RoomRepository roomRepo;
 
     @Transactional
     public void initialize() {
@@ -63,8 +58,6 @@ public class DatabaseInitializer {
             hotel.setRooms(rooms);
         }
         hotelRepo.saveAll(hotels);
-//        roomRepo.saveAll(rooms);
-
     }
 
     private static String readFile() {

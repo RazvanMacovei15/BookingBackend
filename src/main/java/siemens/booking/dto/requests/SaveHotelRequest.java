@@ -1,4 +1,5 @@
 package siemens.booking.dto.requests;
+
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
