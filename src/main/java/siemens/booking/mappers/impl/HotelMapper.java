@@ -2,7 +2,7 @@ package siemens.booking.mappers.impl;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
-import siemens.booking.dto.requests.HotelDto;
+import siemens.booking.dto.HotelDto;
 import siemens.booking.entity.Hotel;
 import siemens.booking.mappers.Mapper;
 

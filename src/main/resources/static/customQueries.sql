@@ -1,10 +1,15 @@
-SELECT
-    CASE
-        WHEN COUNT(*) > 0 THEN 0  -- Room is not available
-        ELSE 1  -- Room is available
-        END AS IsRoomAvailable
-FROM ROOMS r
-         LEFT JOIN RESERVATIONS b ON r.ID= b.ROOM_ID
-WHERE
-    (b.START_DATE>= @StartDate AND b.START_DATE< @EndDate)
-    OR (b.END_DATE> @StartDate AND b.END_DATE<= @EndDate);
+SELECT * FROM ROOMS r
+                  LEFT JOIN RESERVATIONS rs ON rs.ROOM_ID = r.ID
+WHERE r.HOTEL_ID = 2
+  AND r.IS_AVAILABLE=TRUE
+  AND (rs.START_DATE is NULL OR
+       (rs.START_DATE >= '2024-05-02' AND rs.END_DATE < '2024-05-09')
+           OR (rs.END_DATE > '2024-05-02' AND rs.START_DATE <='2024-05-09'));
+
+
+SELECT h.NAME, r.NUMBER, r.PRICE, rs.STATUS, rs.START_DATE, rs.END_DATE
+FROM RESERVATIONS rs
+INNER JOIN ROOMS r ON r.ID = rs.ROOM_ID
+INNER JOIN USERS u ON u.ID = rs.USER_ID
+INNER JOIN HOTELS h ON r.HOTEL_ID = h.ID
+WHERE u.ID = 1;

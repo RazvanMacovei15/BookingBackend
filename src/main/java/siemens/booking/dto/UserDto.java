@@ -1,10 +1,8 @@
-package siemens.booking.model;
+package siemens.booking.dto;
 
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.util.List;
-import java.util.Objects;
 
 @Builder
 @AllArgsConstructor
@@ -13,10 +11,10 @@ import java.util.Objects;
 @Setter
 @EqualsAndHashCode
 @ToString
-public class Hotel {
-    private Long id;
-    private String name;
+public class UserDto {
+    private int id;
+    private String fullName;
+    private String email;
     private BigDecimal latitude;
     private BigDecimal longitude;
-    private List<Room> rooms;
 }

@@ -1,21 +1,20 @@
-package siemens.booking.model;
+package siemens.booking.dto;
 
 import lombok.*;
+import siemens.booking.model.RoomType;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Getter
 @Setter
 @EqualsAndHashCode
 @ToString
-public class Room {
+public class RoomDto {
     private Long id;
     private RoomType type;
     private int number;
     private BigDecimal price;
-    private boolean isAvailable;
 }

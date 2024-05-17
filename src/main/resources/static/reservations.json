@@ -1,93 +1,26 @@
 [
+{
+  "startDate": "2024-05-01",
+  "endDate": "2024-05-10",
+  "userId": 1,
+  "roomId": 1
+},
+{
+  "startDate": "2024-05-17",
+  "endDate": "2024-05-25",
+  "userId": 1,
+  "roomId": 2
+},
+{
+  "startDate": "2024-06-01",
+  "endDate": "2024-06-20",
+  "userId": 1,
+  "roomId": 2
+},
   {
-    "id": 1,
-    "startDate": "2024-05-20",
-    "endDate": "2024-05-25",
-    "user": {
-      "id": 101,
-      "name": "Alice"
-    },
-    "room": {
-      "id": 201,
-      "number": "A101"
-    }
-  },
-  {
-    "id": 2,
-    "startDate": "2024-06-01",
-    "endDate": "2024-06-05",
-    "user": {
-      "id": 102,
-      "name": "Bob"
-    },
-    "room": {
-      "id": 202,
-      "number": "B102"
-    }
-  },
-  {
-    "id": 3,
-    "startDate": "2024-07-10",
-    "endDate": "2024-07-15",
-    "user": {
-      "id": 103,
-      "name": "Carol"
-    },
-    "room": {
-      "id": 203,
-      "number": "C103"
-    }
-  },
-  {
-    "id": 4,
-    "startDate": "2024-08-20",
-    "endDate": "2024-08-25",
-    "user": {
-      "id": 104,
-      "name": "David"
-    },
-    "room": {
-      "id": 204,
-      "number": "D104"
-    }
-  },
-  {
-    "id": 5,
-    "startDate": "2024-09-05",
-    "endDate": "2024-09-10",
-    "user": {
-      "id": 105,
-      "name": "Eve"
-    },
-    "room": {
-      "id": 205,
-      "number": "E105"
-    }
-  },
-  {
-    "id": 6,
-    "startDate": "2024-10-15",
-    "endDate": "2024-10-20",
-    "user": {
-      "id": 106,
-      "name": "Frank"
-    },
-    "room": {
-      "id": 206,
-      "number": "F106"
-    }
-  },
-  {
-    "id": 7,
-    "startDate": "2024-11-01",
-    "endDate": "2024-11-05",
-    "user": {
-      "id": 107,
-      "name": "Grace"
-    },
-    "room": {
-      "id": 207,
-      "number": "G107"
-    }
+    "fullName": "Razvan Macovei",
+    "email": "razvanmc15@gmail.com",
+    "latitude": 46.764654252624204,
+    "longitude": 23.598674125224626
   }
 ]

@@ -24,7 +24,7 @@ public class Room {
     private int type;
     @Column(name = "number")
     private int number;
-    @Column(nullable = false, precision = 5, scale = 2, name = "price" )
+    @Column(precision = 5, scale = 2, name = "price" )
     private BigDecimal price;
     @Column(name = "isAvailable")
     private boolean isAvailable;

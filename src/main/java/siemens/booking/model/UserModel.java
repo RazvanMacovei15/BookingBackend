@@ -1,19 +1,19 @@
 package siemens.booking.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import java.math.BigDecimal;
 
-@Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class User {
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+public class UserModel {
     private int id;
-    private String firstName;
-    private String lastName;
+    private String fullName;
     private String email;
     private BigDecimal latitude;
     private BigDecimal longitude;

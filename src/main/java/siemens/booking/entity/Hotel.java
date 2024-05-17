@@ -1,12 +1,6 @@
 package siemens.booking.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -19,11 +13,11 @@ import java.util.Objects;
 @Getter
 @Setter
 @EqualsAndHashCode
-@ToString
 @Entity
 @Table(name = "HOTELS")
 public class Hotel {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hotel_id_seq")
     private Long id;
     @Column(name = "name", nullable = false, length = 50)
     private String name;

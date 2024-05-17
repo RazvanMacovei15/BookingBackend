@@ -19,7 +19,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
     private int id;
-    @Column(name = "username", nullable = false, length = 50)
+    @Column(name = "fullName", nullable = false, length = 50)
     private String fullName;
     @Column(name = "email", nullable = false, length = 50)
     private String email;

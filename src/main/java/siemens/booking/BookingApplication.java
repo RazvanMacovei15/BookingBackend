@@ -15,7 +15,7 @@ public class BookingApplication {
     @Bean
     CommandLineRunner initDatabase(DatabaseInitializer jsonService) {
         return args -> {
-            jsonService.initialize();
+            jsonService.initializeHotelsAndRooms();
         };
     }
 

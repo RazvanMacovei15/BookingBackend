@@ -10,7 +10,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDate;
-import java.time.Period;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,7 +24,7 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "reservation_id_seq")
     private Long id;
-    @Column(name = "startDate", nullable = false)
+    @Column(name = "startDate")
     private LocalDate startDate;
     @Column(name = "endDate")
     private LocalDate endDate;
@@ -35,4 +34,6 @@ public class Reservation {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "roomId")
     private Room room;
+    @Column(name = "status")
+    private int status;
 }
