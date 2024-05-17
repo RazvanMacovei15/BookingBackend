@@ -1,8 +1,7 @@
-package siemens.booking.service;
+package siemens.booking.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import siemens.booking.entity.Hotel;
 import siemens.booking.repository.HotelRepository;
 
 @Service

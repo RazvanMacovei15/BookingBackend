@@ -1,21 +1,19 @@
-package siemens.booking.service;
+package siemens.booking.services;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import siemens.booking.dto.requests.ReservationDto;
 import siemens.booking.dto.requests.SaveReservationRequest;
 import siemens.booking.entity.Reservation;
-import siemens.booking.entity.Room;
 import siemens.booking.repository.ReservationRepository;
-
-import java.time.LocalDate;
 
 @Service
 @RequiredArgsConstructor
-public class ReservationService {
+public class ReservationServiceImpl implements ReservationService {
+
     private final ReservationRepository reservationRepository;
 
-    public long save(SaveReservationRequest request) {
+    public long save(ReservationDto request) {
         Reservation reservation = Reservation.builder()
                 .id(request.getId())
                 .startDate(request.getStartDate())

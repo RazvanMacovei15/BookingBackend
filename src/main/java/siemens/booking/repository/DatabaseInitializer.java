@@ -22,7 +22,8 @@ import siemens.booking.model.RoomType;
 @Component
 @RequiredArgsConstructor
 public class DatabaseInitializer {
-    private static final String JSON_DATABASE = "src/main/resources/static/hotels.json";
+    private static final String JSON_DATABASE_HOTELS_ROOMS = "src/main/resources/static/hotels.json";
+    private static final String JSON_DATABASE_RESERVATIONS = "src/main/resources/static/reservations.json";
 
     private final HotelRepository hotelRepo;
 
@@ -33,13 +34,6 @@ public class DatabaseInitializer {
         String content = readFile();
         JSONArray jsonObject = new JSONArray(content);
         List<Hotel> hotels = new LinkedList<>();
-        List<Reservation> reservations = new LinkedList<>();
-        User user = User.builder()
-                .fullName("John Doe")
-                .email("ceva")
-                .latitude(BigDecimal.valueOf(0))
-                .longitude(BigDecimal.valueOf(0))
-                .build();
         for (int i = 0; i < jsonObject.length(); i++) {
             JSONObject hotelJson = jsonObject.getJSONObject(i);
             long id = hotelJson.getLong("id");
@@ -69,26 +63,15 @@ public class DatabaseInitializer {
                         .hotel(hotel)
                         .build();
                 rooms.add(room);
-
-                Reservation reservation = Reservation.builder()
-                        .startDate(LocalDate.parse("2021-10-10"))
-                        .endDate(LocalDate.parse("2021-10-20"))
-                        .user(user)
-                        .room(room)
-                        .build();
-                reservations.add(reservation);
             }
             hotel.setRooms(rooms);
         }
-        user.setReservations(reservations);
-        userRepository.save(user);
         hotelRepo.saveAll(hotels);
-
     }
 
     private static String readFile() {
         try {
-            return new String(Files.readAllBytes(Paths.get(JSON_DATABASE)));
+            return new String(Files.readAllBytes(Paths.get(JSON_DATABASE_HOTELS_ROOMS)));
         } catch (IOException e) {
             throw new RuntimeException("Could not read hotels.json", e);
         }

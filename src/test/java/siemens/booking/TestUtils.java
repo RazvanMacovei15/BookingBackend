@@ -70,17 +70,54 @@ public class TestUtils {
                 .build();
     }
 
-    public static Reservation createTestReservation(Room room){
+    public static Reservation createTestReservationA(Room room,User user){
         return Reservation.builder()
                 .startDate(LocalDate.parse("2021-10-01"))
                 .endDate(LocalDate.parse("2021-10-10"))
                 .room(room)
+                .user(user)
                 .build();
     }
 
-    public static User createTestUser() {
+    public static Reservation createTestReservationB(Room room,User user){
+        return Reservation.builder()
+                .startDate(LocalDate.parse("2021-10-11"))
+                .endDate(LocalDate.parse("2021-10-20"))
+                .room(room)
+                .user(user)
+                .build();
+    }
+
+    public static Reservation createTestReservationC(Room room,User user){
+        return Reservation.builder()
+                .startDate(LocalDate.parse("2021-10-21"))
+                .endDate(LocalDate.parse("2021-10-30"))
+                .room(room)
+                .user(user)
+                .build();
+    }
+
+    public static User createTestUserA() {
         return User.builder()
                 .fullName("John Doe")
+                .email("@idiots.com")
+                .longitude(new BigDecimal("67.45674674"))
+                .latitude(new BigDecimal("67.45674674"))
+                .build();
+    }
+    
+    public static User createTestUserB() {
+        return User.builder()
+                .fullName("Jane Doe")
+                .email("@idiots.com")
+                .longitude(new BigDecimal("67.45674674"))
+                .latitude(new BigDecimal("67.45674674"))
+                .build();
+    }
+
+    public static User createTestUserC() {
+        return User.builder()
+                .fullName("John Smith")
                 .email("@idiots.com")
                 .longitude(new BigDecimal("67.45674674"))
                 .latitude(new BigDecimal("67.45674674"))
