@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @EqualsAndHashCode
 @ToString
 public class UserReservation {
+    private final Long id;
     private final String hotelName;
     private final int roomNumber;
     private final BigDecimal price;

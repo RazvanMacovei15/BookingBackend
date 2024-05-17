@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalTime;
+
 @AllArgsConstructor
 @Builder
 @Getter
@@ -16,4 +18,5 @@ import lombok.ToString;
 public class HotelDto {
     private final Long id;
     private final String name;
+    private LocalTime checkInTime;
 }

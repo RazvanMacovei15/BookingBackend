@@ -17,7 +17,8 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
             "AND r.isAvailable = true " +
             "AND (rs.startDate IS NULL " +
             "OR (rs.startDate >= :startDate AND rs.endDate < :endDate) " +
-            "OR (rs.endDate > :startDate AND rs.startDate <= :endDate))")
+            "OR (rs.endDate > :startDate AND rs.startDate <= :endDate))" +
+            "AND rs.status != 1")
     List<Room> findAvailableRooms(@Param("startDate") LocalDate startDate,
                                   @Param("endDate") LocalDate endDate,
                                   @Param("hotelId") Long hotelId);

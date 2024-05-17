@@ -29,4 +29,10 @@ public class ReservationController {
         Reservation savedReservation = reservationService.reserveRoom(reservationRequest);
         return savedReservation.getId();
     }
+
+    @PatchMapping(path = "/{id}")
+    public void cancelReservation(@PathVariable Long id){
+        reservationService.cancelReservation(id);
+    }
+
 }

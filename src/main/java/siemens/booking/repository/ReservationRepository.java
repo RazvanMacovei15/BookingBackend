@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
-    @Query("SELECT new siemens.booking.entity.UserReservationDto (h.name, r.number, r.price, rs.startDate, rs.endDate, rs.status) " +
+    @Query("SELECT new siemens.booking.entity.UserReservationDto (rs.id, h.name, r.number, r.price, rs.startDate, rs.endDate, rs.status) " +
             "FROM Reservation rs " +
             "INNER JOIN rs.room r " +
             "INNER JOIN rs.user u " +

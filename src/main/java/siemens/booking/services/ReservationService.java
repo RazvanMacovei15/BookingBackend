@@ -10,4 +10,6 @@ public interface ReservationService {
     Reservation reserveRoom(ReservationRequest reservationRequest);
 
     List<UserReservation> getUserReservations(Long userId);
+
+    void cancelReservation(Long reservationId);
 }

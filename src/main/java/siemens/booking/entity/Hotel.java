@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.sql.Time;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -29,4 +32,6 @@ public class Hotel {
     private List<Room> rooms;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Feedback> feedbacks;
+    @Column(name = "checkInTime")
+    private LocalTime checkInTime;
 }
