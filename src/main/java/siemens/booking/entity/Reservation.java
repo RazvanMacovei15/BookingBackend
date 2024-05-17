@@ -25,11 +25,14 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "reservation_id_seq")
     private Long id;
+    @Column(name = "startDate", nullable = false)
     private LocalDate startDate;
+    @Column(name = "endDate")
     private LocalDate endDate;
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "userId")
     private User user;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "roomId")
     private Room room;
 }

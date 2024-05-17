@@ -1,17 +1,22 @@
 package siemens.booking.repository;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
+
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 import siemens.booking.entity.Hotel;
+import siemens.booking.entity.Reservation;
 import siemens.booking.entity.Room;
+import siemens.booking.entity.User;
 import siemens.booking.model.RoomType;
 
 @Component
@@ -21,11 +26,20 @@ public class DatabaseInitializer {
 
     private final HotelRepository hotelRepo;
 
+    private final UserRepository userRepository;
+
     @Transactional
     public void initialize() {
         String content = readFile();
         JSONArray jsonObject = new JSONArray(content);
         List<Hotel> hotels = new LinkedList<>();
+        List<Reservation> reservations = new LinkedList<>();
+        User user = User.builder()
+                .fullName("John Doe")
+                .email("ceva")
+                .latitude(BigDecimal.valueOf(0))
+                .longitude(BigDecimal.valueOf(0))
+                .build();
         for (int i = 0; i < jsonObject.length(); i++) {
             JSONObject hotelJson = jsonObject.getJSONObject(i);
             long id = hotelJson.getLong("id");
@@ -47,17 +61,29 @@ public class DatabaseInitializer {
                 int roomType = roomJson.getInt("type");
                 BigDecimal price = BigDecimal.valueOf(roomJson.getDouble("price"));
                 boolean isAvailable = roomJson.getBoolean("isAvailable");
-                rooms.add(Room.builder()
+                Room room = Room.builder()
                         .number(roomNumber)
                         .type(RoomType.valueOf(roomType).getValue())
                         .price(price)
                         .isAvailable(isAvailable)
                         .hotel(hotel)
-                        .build());
+                        .build();
+                rooms.add(room);
+
+                Reservation reservation = Reservation.builder()
+                        .startDate(LocalDate.parse("2021-10-10"))
+                        .endDate(LocalDate.parse("2021-10-20"))
+                        .user(user)
+                        .room(room)
+                        .build();
+                reservations.add(reservation);
             }
             hotel.setRooms(rooms);
         }
+        user.setReservations(reservations);
+        userRepository.save(user);
         hotelRepo.saveAll(hotels);
+
     }
 
     private static String readFile() {

@@ -1,10 +1,13 @@
 package siemens.booking;
 
 import siemens.booking.entity.Hotel;
+import siemens.booking.entity.Reservation;
 import siemens.booking.entity.Room;
+import siemens.booking.entity.User;
 import siemens.booking.model.RoomType;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class TestUtils {
     public static Hotel createTestHotelA() {
@@ -64,6 +67,23 @@ public class TestUtils {
                 .price(new BigDecimal("300.00"))
                 .isAvailable(true)
                 .hotel(hotel)
+                .build();
+    }
+
+    public static Reservation createTestReservation(Room room){
+        return Reservation.builder()
+                .startDate(LocalDate.parse("2021-10-01"))
+                .endDate(LocalDate.parse("2021-10-10"))
+                .room(room)
+                .build();
+    }
+
+    public static User createTestUser() {
+        return User.builder()
+                .fullName("John Doe")
+                .email("@idiots.com")
+                .longitude(new BigDecimal("67.45674674"))
+                .latitude(new BigDecimal("67.45674674"))
                 .build();
     }
 }
