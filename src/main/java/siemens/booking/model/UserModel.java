@@ -15,6 +15,4 @@ public class UserModel {
     private int id;
     private String fullName;
     private String email;
-    private BigDecimal latitude;
-    private BigDecimal longitude;
 }

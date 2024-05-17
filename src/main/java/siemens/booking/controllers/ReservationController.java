@@ -34,5 +34,4 @@ public class ReservationController {
     public void cancelReservation(@PathVariable Long id){
         reservationService.cancelReservation(id);
     }
-
 }

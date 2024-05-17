@@ -19,7 +19,6 @@ import siemens.booking.entity.Reservation;
 import siemens.booking.entity.Room;
 import siemens.booking.entity.User;
 import siemens.booking.model.RoomType;
-import siemens.booking.rapidapi.UserLocation;
 
 @Component
 @RequiredArgsConstructor

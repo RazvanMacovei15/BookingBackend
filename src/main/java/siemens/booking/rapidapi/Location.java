@@ -17,7 +17,7 @@ import java.net.http.HttpResponse;
 @Setter
 @EqualsAndHashCode
 @ToString
-public class UserLocation {
+public class Location {
 
     private UserDto userDto;
 
@@ -52,8 +52,8 @@ public class UserLocation {
     private void setCoordinates(String str) {
         String[] coordinates = str.split(",");
         if (coordinates.length == 2) {
-            userDto.setLatitude(BigDecimal.valueOf(Double.parseDouble(coordinates[0])));
-            userDto.setLongitude(BigDecimal.valueOf(Double.parseDouble(coordinates[1])));
+            BigDecimal latitude = BigDecimal.valueOf(Double.parseDouble(coordinates[0]));
+            BigDecimal longitude =BigDecimal.valueOf(Double.parseDouble(coordinates[1]));
         } else {
             System.out.println("You parsed the wrong attribute!");
         }
