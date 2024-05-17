@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.json.*;
 import org.springframework.stereotype.Component;
@@ -25,11 +26,11 @@ public class DatabaseInitializer {
 
     private final RoomRepository roomRepo;
 
+    @Transactional
     public void initialize() {
         String content = readFile();
         JSONArray jsonObject = new JSONArray(content);
         List<Hotel> hotels = new LinkedList<>();
-        List<Room> rooms = new LinkedList<>();
         for (int i = 0; i < jsonObject.length(); i++) {
             JSONObject hotelJson = jsonObject.getJSONObject(i);
             long id = hotelJson.getLong("id");
@@ -44,6 +45,7 @@ public class DatabaseInitializer {
                     .build();
             hotels.add(hotel);
             JSONArray roomsArray = hotelJson.getJSONArray("rooms");
+            List<Room> rooms = new LinkedList<>();
             for (int j = 0; j < roomsArray.length(); j++) {
                 JSONObject roomJson = roomsArray.getJSONObject(j);
                 int roomNumber = roomJson.getInt("roomNumber");
@@ -58,9 +60,11 @@ public class DatabaseInitializer {
                         .hotel(hotel)
                         .build());
             }
+            hotel.setRooms(rooms);
         }
         hotelRepo.saveAll(hotels);
-        roomRepo.saveAll(rooms);
+//        roomRepo.saveAll(rooms);
+
     }
 
     private static String readFile() {

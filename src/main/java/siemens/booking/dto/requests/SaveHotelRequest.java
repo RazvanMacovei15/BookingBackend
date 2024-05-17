@@ -1,9 +1,11 @@
 package siemens.booking.dto.requests;
-
-import jakarta.persistence.Column;
-import lombok.*;
-
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 import java.math.BigDecimal;
+
 @Builder
 @Getter
 @RequiredArgsConstructor

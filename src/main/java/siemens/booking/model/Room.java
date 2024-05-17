@@ -14,7 +14,6 @@ public class Room {
     private int number;
     private BigDecimal price;
     private boolean isAvailable;
-    private Hotel hotel;
 
     @Override
     public boolean equals(Object o) {
@@ -36,7 +35,6 @@ public class Room {
                 ", roomNumber=" + number +
                 ", price=" + price +
                 ", isAvailable=" + isAvailable +
-                ", hotel=" + hotel +
                 '}';
     }
 }
