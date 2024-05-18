@@ -3,7 +3,6 @@ package siemens.booking.rapidapi;
 import lombok.*;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
-import siemens.booking.dto.UserDto;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -19,7 +18,7 @@ import java.net.http.HttpResponse;
 @EqualsAndHashCode
 @ToString
 @Component
-public class Location {
+public class LocationApi {
 
     private BigDecimal latitude;
 
@@ -45,11 +44,11 @@ public class Location {
         return response.body();
     }
 
-    public Location getUserCurrentLocation(){
+    public LocationApi getUserCurrentLocation(){
         String response  = handleIpInfoHttpResponse();
         String locationCoordinates = getAttribute(response);
         setCoordinates(locationCoordinates);
-        return new Location(latitude, longitude);
+        return new LocationApi(latitude, longitude);
     }
 
 

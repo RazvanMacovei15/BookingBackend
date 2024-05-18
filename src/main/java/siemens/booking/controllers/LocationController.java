@@ -2,7 +2,10 @@ package siemens.booking.controllers;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import siemens.booking.rapidapi.Location;
+import siemens.booking.dto.LocationDto;
+import siemens.booking.entity.Location;
+import siemens.booking.mappers.Mapper;
+import siemens.booking.services.LocationService;
 
 @RestController
 @RequestMapping("/location")
@@ -10,10 +13,12 @@ import siemens.booking.rapidapi.Location;
 @CrossOrigin(origins = "http://localhost:3000")
 public class LocationController {
 
-    private final Location location;
+    private final LocationService locationService;
+    private final Mapper<Location, LocationDto> locationMapper;
 
     @GetMapping
-    public Location getLocation(){
-        return location.getUserCurrentLocation();
+    public LocationDto getLocation(){
+        Location location = locationService.getLocation();
+        return locationMapper.mapTo(location);  // Fix this line
     }
 }

@@ -16,10 +16,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
-    @Override
-    public void updateUserLocation() {
-
-    }
 
     @Override
     public User getUser(Long userId) {

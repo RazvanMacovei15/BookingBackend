@@ -10,7 +10,6 @@ import siemens.booking.services.UserService;
 @RestController
 @AllArgsConstructor
 @CrossOrigin(origins = "http://localhost:3000")
-
 public class UserController {
 
     private final UserService userService;

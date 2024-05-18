@@ -14,11 +14,9 @@ import lombok.RequiredArgsConstructor;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
-import siemens.booking.entity.Hotel;
-import siemens.booking.entity.Reservation;
-import siemens.booking.entity.Room;
-import siemens.booking.entity.User;
+import siemens.booking.entity.*;
 import siemens.booking.model.RoomType;
+import siemens.booking.rapidapi.LocationApi;
 
 @Component
 @RequiredArgsConstructor
@@ -29,6 +27,8 @@ public class DatabaseInitializer {
     private final HotelRepository hotelRepo;
 
     private final UserRepository userRepository;
+
+    private final LocationRepository locationRepository;
 
     @Transactional
     public void initializeHotelsAndRooms() {
@@ -68,6 +68,7 @@ public class DatabaseInitializer {
         }
         hotelRepo.saveAll(hotels);
         userRepository.save(initializeDefaultUser());
+        locationRepository.save(getUserCurrentLocation());
     }
 
     private static String readHotelsAndRoomsFile() {
@@ -94,5 +95,18 @@ public class DatabaseInitializer {
                 .fullName(fullName)
                 .email(email)
                 .build();
+    }
+
+    public Location getUserCurrentLocation(){
+        LocationApi location = new LocationApi();
+        location.getUserCurrentLocation();
+        return Location.builder()
+                .longitude(location.getLongitude())
+                .latitude(location.getLatitude())
+                .build();
+    }
+
+    public static void main(String[] args) {
+
     }
 }
