@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@RequestMapping("/hotels")
 @AllArgsConstructor
 public class HotelController {
 
@@ -19,14 +20,14 @@ public class HotelController {
 
     private Mapper<Hotel, HotelDto> hotelMapper;
 
-    @PostMapping(path = "/hotels")
+    @PostMapping
     public HotelDto createHotel(@RequestBody HotelDto hotelDto){
         Hotel hotel = hotelMapper.mapFrom(hotelDto);
         Hotel savedHotel = hotelService.save(hotel);
         return hotelMapper.mapTo(savedHotel);
     }
 
-    @GetMapping(path = "/hotels")
+    @GetMapping
     public List<HotelDto> searchHotels(@RequestParam BigDecimal userLatitude,
                                        @RequestParam BigDecimal userLongitude,
                                        @RequestParam BigDecimal radius){

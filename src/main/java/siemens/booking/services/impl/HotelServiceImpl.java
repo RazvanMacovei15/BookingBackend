@@ -27,13 +27,16 @@ public class HotelServiceImpl implements HotelService {
     public List<Hotel> searchHotels(BigDecimal userLatitude,
                                     BigDecimal userLongitude,
                                     BigDecimal radius) {
-        return hotelRepository.findAll().stream()
+        List<Hotel> list = hotelRepository.findAll().stream()
                 .filter(hotel -> isWithinRadius(hotel, userLatitude, userLongitude, radius))
                 .toList();
+        System.out.println(list);
+        return list;
     }
 
     private boolean isWithinRadius(Hotel hotel, BigDecimal userLatitude, BigDecimal userLongitude, BigDecimal radius) {
        BigDecimal distance =  calculateDistance(hotel.getLatitude(), hotel.getLongitude(), userLatitude, userLongitude);
+        System.out.println(distance + " " + radius);
        return distance.compareTo(radius) <= 0;
     }
 
@@ -56,6 +59,6 @@ public class HotelServiceImpl implements HotelService {
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
         // Distance in kilometers
-        return BigDecimal.valueOf((EARTH_RADIUS * c)*1000);
+        return BigDecimal.valueOf((EARTH_RADIUS * c));
     }
 }

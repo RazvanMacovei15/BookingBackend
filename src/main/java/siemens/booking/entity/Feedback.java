@@ -24,7 +24,18 @@ public class Feedback {
     private Long id;
     @Column(name = "description")
     private String description;
+    @Column(name = "cleanliness")
+    private int cleanliness;
+    @Column(name = "comfort")
+    private int comfort;
+    @Column(name = "location")
+    private int location;
+    @Column(name = "staff")
+    private int staff;
     @ManyToOne
     @JoinColumn(name = "hotelId")
     private Hotel hotel;
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
 }

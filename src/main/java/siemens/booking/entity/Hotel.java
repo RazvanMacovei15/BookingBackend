@@ -4,11 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.sql.Time;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.Objects;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,9 +21,9 @@ public class Hotel {
     private Long id;
     @Column(name = "name", nullable = false, length = 50)
     private String name;
-    @Column(nullable = false, precision = 10, scale = 8, name = "latitude")
+    @Column(precision = 10, scale = 8, name = "latitude")
     private BigDecimal latitude;
-    @Column(nullable = false, precision = 10, scale = 8, name = "longitude")
+    @Column(precision = 10, scale = 8, name = "longitude")
     private BigDecimal longitude;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Room> rooms;

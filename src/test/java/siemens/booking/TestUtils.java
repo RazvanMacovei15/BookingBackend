@@ -97,30 +97,4 @@ public class TestUtils {
                 .build();
     }
 
-    public static User createTestUserA() {
-        return User.builder()
-                .fullName("John Doe")
-                .email("@idiots.com")
-                .longitude(new BigDecimal("67.45674674"))
-                .latitude(new BigDecimal("67.45674674"))
-                .build();
-    }
-    
-    public static User createTestUserB() {
-        return User.builder()
-                .fullName("Jane Doe")
-                .email("@idiots.com")
-                .longitude(new BigDecimal("67.45674674"))
-                .latitude(new BigDecimal("67.45674674"))
-                .build();
-    }
-
-    public static User createTestUserC() {
-        return User.builder()
-                .fullName("John Smith")
-                .email("@idiots.com")
-                .longitude(new BigDecimal("67.45674674"))
-                .latitude(new BigDecimal("67.45674674"))
-                .build();
-    }
 }

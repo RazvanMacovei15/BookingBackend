@@ -25,20 +25,10 @@ import siemens.booking.model.RoomType;
 public class DatabaseInitializer {
     private static final String JSON_DATABASE_HOTELS_ROOMS = "src/main/resources/static/hotels.json";
     private static final String JSON_DATABASE_DEFAULT_USER = "src/main/resources/static/createUserJSON.json";
-    private static final String RESERVATION_A = "src/main/resources/static/reservationA.json";
-    private static final String RESERVATION_B = "src/main/resources/static/reservationB.json";
-    private static final String RESERVATION_C = "src/main/resources/static/reservationC.json";
 
     private final HotelRepository hotelRepo;
 
     private final UserRepository userRepository;
-
-    private final ReservationRepository reservationRepository;
-
-    private final RoomRepository roomRepository;
-
-
-
 
     @Transactional
     public void initializeHotelsAndRooms() {
@@ -47,7 +37,6 @@ public class DatabaseInitializer {
         List<Hotel> hotels = new LinkedList<>();
         for (int i = 0; i < jsonObject.length(); i++) {
             JSONObject hotelJson = jsonObject.getJSONObject(i);
-
             String name = hotelJson.getString("name");
             BigDecimal latitude = BigDecimal.valueOf(hotelJson.getDouble("latitude"));
             BigDecimal longitude = BigDecimal.valueOf(hotelJson.getDouble("longitude"));
@@ -101,40 +90,9 @@ public class DatabaseInitializer {
         JSONObject jsonObject = new JSONObject(content);
         String fullName = jsonObject.getString("fullName");
         String email = jsonObject.getString("email");
-        BigDecimal latitude = new BigDecimal(jsonObject.getDouble("latitude"));
-        BigDecimal longitude = new BigDecimal(jsonObject.getDouble("longitude"));
         return User.builder()
                 .fullName(fullName)
                 .email(email)
                 .build();
-    }
-
-    public void initializeReservationA(){
-        String content = readFile(RESERVATION_A);
-        JSONObject jsonObject = new JSONObject(content);
-        saveReservation(jsonObject);
-    }
-    public void initializeReservationC(){
-        String content = readFile(RESERVATION_C);
-        JSONObject jsonObject = new JSONObject(content);
-        saveReservation(jsonObject);
-    }
-    public void initializeReservationB(){
-        String content = readFile(RESERVATION_B);
-        JSONObject jsonObject = new JSONObject(content);
-        saveReservation(jsonObject);
-    }
-
-    private void saveReservation(JSONObject jsonObject) {
-        LocalDate startDate = LocalDate.parse(jsonObject.getString("startDate"));
-        LocalDate endDate = LocalDate.parse(jsonObject.getString("endDate"));
-        Long userId = jsonObject.getLong("userId");
-        Long roomId = jsonObject.getLong("roomId");
-        reservationRepository.save(Reservation.builder()
-                .startDate(startDate)
-                .endDate(endDate)
-                .user(userRepository.getReferenceById(userId))
-                .room(roomRepository.getReferenceById(roomId))
-                .build());
     }
 }
