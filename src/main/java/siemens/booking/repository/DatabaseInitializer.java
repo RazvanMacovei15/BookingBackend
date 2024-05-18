@@ -106,8 +106,6 @@ public class DatabaseInitializer {
         return User.builder()
                 .fullName(fullName)
                 .email(email)
-                .latitude(latitude)
-                .longitude(longitude)
                 .build();
     }
 
