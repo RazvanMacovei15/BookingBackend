@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import siemens.booking.dto.ReservationRequest;
 import siemens.booking.entity.Reservation;
-import siemens.booking.mappers.impl.RoomMapper;
 import siemens.booking.model.UserReservation;
 import siemens.booking.services.ReservationService;
 
@@ -28,7 +27,7 @@ public class ReservationController {
         return savedReservation.getId();
     }
 
-    @PatchMapping(path = "/{id}")
+    @PutMapping(path = "/{id}/cancelations")
     public void cancelReservation(@PathVariable Long id){
         reservationService.cancelReservation(id);
     }

@@ -2,7 +2,6 @@ package siemens.booking.dto;
 
 import lombok.*;
 import siemens.booking.model.RoomType;
-
 import java.math.BigDecimal;
 
 @Builder

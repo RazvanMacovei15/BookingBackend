@@ -1,8 +1,10 @@
 package siemens.booking.entity;
 
-import lombok.*;
-import siemens.booking.model.ReservationStatus;
-
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 

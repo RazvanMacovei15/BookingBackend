@@ -4,6 +4,7 @@ public class StaticStrings {
     public static final String MAIN_MENU = """
                                          
             1. Search hotel by radius
+            2. Check your reservations
             0. Exit the application
                                          
             Choice:
@@ -29,5 +30,12 @@ public class StaticStrings {
 
     public static final String ROOM_SELECTION= """
             Select a room by entering the room id:""";
+
+    public static final String ROOM_SELECT_PROMPT = """
+            Enter carefully with this LocalDate format: yyyy-MM-dd the starting date of the reservation:""";
+
+    public static final String ROOM_SELECT_PROMPT_END = """
+            Enter carefully with this LocalDate format: yyyy-MM-dd the ending date of the reservation:""";
+
 
 }

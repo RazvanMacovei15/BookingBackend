@@ -5,12 +5,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import siemens.booking.dto.HotelDto;
 import siemens.booking.dto.RoomDto;
-import siemens.booking.entity.Hotel;
-
+import siemens.booking.model.ReservationStatus;
+import siemens.booking.model.UserReservation;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class JsonParser {
@@ -35,6 +36,7 @@ public class JsonParser {
             }
         } catch (JSONException e) {
             e.printStackTrace();
+            return Collections.emptyList();
         }
         return hotels;
     }
@@ -47,14 +49,41 @@ public class JsonParser {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 RoomDto room = RoomDto.builder()
                         .id(jsonObject.getLong("id"))
-                        .number(jsonObject.getInt("roomNumber"))
+                        .number(jsonObject.getInt("number"))
                         .price(BigDecimal.valueOf(jsonObject.getDouble("price")))
                         .build();
                 rooms.add(room);
             }
         } catch (JSONException e) {
             e.printStackTrace();
+            return Collections.emptyList();
         }
         return rooms;
     }
+
+    public List<UserReservation> userReservations () {
+        List<UserReservation> rooms = new ArrayList<>();
+        try {
+            JSONArray jsonArray = new JSONArray(json);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                UserReservation userReservation = UserReservation.builder()
+                        .id(jsonObject.getLong("id"))
+                        .hotelName(jsonObject.getString("hotelName"))
+                        .roomNumber(jsonObject.getInt("roomNumber"))
+                        .price(BigDecimal.valueOf(jsonObject.getDouble("price")))
+                        .startDate(LocalDate.parse(jsonObject.getString("startDate")))
+                        .endDate(LocalDate.parse(jsonObject.getString("endDate")))
+                        .status(jsonObject.getString("status").equals("ACTIVE")  ? ReservationStatus.ACTIVE : ReservationStatus.CANCELLED)
+                        .build();
+                rooms.add(userReservation);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
+        return rooms;
+    }
+
+
 }

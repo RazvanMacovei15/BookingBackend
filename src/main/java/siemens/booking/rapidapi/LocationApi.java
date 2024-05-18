@@ -2,8 +2,6 @@ package siemens.booking.rapidapi;
 
 import lombok.*;
 import org.json.JSONObject;
-import org.springframework.stereotype.Component;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URI;

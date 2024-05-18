@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import siemens.booking.dto.ReservationRequest;
 import siemens.booking.entity.Reservation;
-import siemens.booking.entity.Room;
 import siemens.booking.exceptions.NotFoundException;
 import siemens.booking.exceptions.PreconditionFailedException;
 import siemens.booking.model.ReservationStatus;
@@ -13,13 +12,9 @@ import siemens.booking.repository.ReservationRepository;
 import siemens.booking.repository.RoomRepository;
 import siemens.booking.repository.UserRepository;
 import siemens.booking.services.ReservationService;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 @RequiredArgsConstructor

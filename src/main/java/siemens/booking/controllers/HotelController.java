@@ -6,7 +6,6 @@ import siemens.booking.dto.HotelDto;
 import siemens.booking.entity.Hotel;
 import siemens.booking.mappers.Mapper;
 import siemens.booking.services.HotelService;
-
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;

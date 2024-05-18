@@ -6,7 +6,6 @@ import siemens.booking.dto.RoomDto;
 import siemens.booking.entity.Room;
 import siemens.booking.mappers.Mapper;
 import siemens.booking.services.RoomService;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
