@@ -17,8 +17,6 @@ public class ReservationController {
 
     private final ReservationService reservationService;
 
-    private final RoomMapper roomMapper;
-
     @GetMapping
     public List<UserReservation> getUserReservations(@RequestParam Long userId){
         return reservationService.getUserReservations(userId);

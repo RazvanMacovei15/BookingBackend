@@ -9,19 +9,21 @@ import siemens.booking.mappers.Mapper;
 @Component
 public class HotelMapper implements Mapper<Hotel, HotelDto> {
 
-    private ModelMapper modelMapper;
-
-    public HotelMapper(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-    }
-
     @Override
     public HotelDto mapTo(Hotel hotel) {
-        return modelMapper.map(hotel, HotelDto.class);
+        return HotelDto.builder()
+                .id(hotel.getId())
+                .name(hotel.getName())
+                .checkInTime(hotel.getCheckInTime())
+                .build();
     }
 
     @Override
     public Hotel mapFrom(HotelDto hotelDto) {
-        return modelMapper.map(hotelDto, Hotel.class);
+        return Hotel.builder()
+                .id(hotelDto.getId())
+                .name(hotelDto.getName())
+                .checkInTime(hotelDto.getCheckInTime())
+                .build();
     }
 }

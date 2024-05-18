@@ -19,7 +19,7 @@ public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hotel_id_seq")
     private Long id;
-    @Column(name = "name", nullable = false, length = 50)
+    @Column(name = "name", length = 50)
     private String name;
     @Column(precision = 10, scale = 8, name = "latitude")
     private BigDecimal latitude;

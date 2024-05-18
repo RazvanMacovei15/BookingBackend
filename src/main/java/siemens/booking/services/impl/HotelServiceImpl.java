@@ -30,13 +30,17 @@ public class HotelServiceImpl implements HotelService {
         List<Hotel> list = hotelRepository.findAll().stream()
                 .filter(hotel -> isWithinRadius(hotel, userLatitude, userLongitude, radius))
                 .toList();
-        System.out.println(list);
         return list;
+    }
+
+    @Override
+    public List<Hotel> getAllHotels() {
+        return StreamSupport.stream(hotelRepository.findAll().spliterator(), false)
+                .collect(Collectors.toList());
     }
 
     private boolean isWithinRadius(Hotel hotel, BigDecimal userLatitude, BigDecimal userLongitude, BigDecimal radius) {
        BigDecimal distance =  calculateDistance(hotel.getLatitude(), hotel.getLongitude(), userLatitude, userLongitude);
-        System.out.println(distance + " " + radius);
        return distance.compareTo(radius) <= 0;
     }
 

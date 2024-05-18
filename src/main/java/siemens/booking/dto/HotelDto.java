@@ -4,14 +4,13 @@ import lombok.*;
 
 import java.time.LocalTime;
 
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Getter
 @EqualsAndHashCode
 @ToString
 public class HotelDto {
-    private  Long id;
-    private  String name;
-    private  LocalTime checkInTime;
+    private final Long id;
+    private final String name;
+    private final LocalTime checkInTime;
 }

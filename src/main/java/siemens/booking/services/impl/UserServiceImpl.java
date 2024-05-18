@@ -20,4 +20,9 @@ public class UserServiceImpl implements UserService {
     public void updateUserLocation() {
 
     }
+
+    @Override
+    public User getUser(Long userId) {
+        return userRepository.findById(userId).orElseThrow();
+    }
 }

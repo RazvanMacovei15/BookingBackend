@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/hotels")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000")
 public class HotelController {
 
     private final HotelService hotelService;
@@ -32,6 +33,15 @@ public class HotelController {
                                        @RequestParam BigDecimal userLongitude,
                                        @RequestParam BigDecimal radius){
         List<Hotel> hotels = hotelService.searchHotels(userLatitude, userLongitude, radius);
+        System.out.println(hotels.size());
+        return hotels.stream()
+                .map(hotelMapper::mapTo)
+                .collect(Collectors.toList());
+    }
+
+    @GetMapping("/all")
+    public List<HotelDto> getAllHotels(){
+        List<Hotel> hotels = hotelService.getAllHotels();
         return hotels.stream()
                 .map(hotelMapper::mapTo)
                 .collect(Collectors.toList());

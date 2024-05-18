@@ -2,6 +2,7 @@ package siemens.booking.rapidapi;
 
 import lombok.*;
 import org.json.JSONObject;
+import org.springframework.stereotype.Component;
 import siemens.booking.dto.UserDto;
 
 import java.io.IOException;
@@ -17,9 +18,12 @@ import java.net.http.HttpResponse;
 @Setter
 @EqualsAndHashCode
 @ToString
+@Component
 public class Location {
 
-    private UserDto userDto;
+    private BigDecimal latitude;
+
+    private BigDecimal longitude;
 
     private static String handleIpInfoHttpResponse() {
 
@@ -38,22 +42,22 @@ public class Location {
             e.printStackTrace();
         }
         assert response != null;
-        System.out.println(response.body());
         return response.body();
     }
 
-    public void getUserCurrentLocation(){
+    public Location getUserCurrentLocation(){
         String response  = handleIpInfoHttpResponse();
         String locationCoordinates = getAttribute(response);
         setCoordinates(locationCoordinates);
+        return new Location(latitude, longitude);
     }
 
 
     private void setCoordinates(String str) {
         String[] coordinates = str.split(",");
         if (coordinates.length == 2) {
-            BigDecimal latitude = BigDecimal.valueOf(Double.parseDouble(coordinates[0]));
-            BigDecimal longitude =BigDecimal.valueOf(Double.parseDouble(coordinates[1]));
+            latitude = BigDecimal.valueOf(Double.parseDouble(coordinates[0]));
+            longitude =BigDecimal.valueOf(Double.parseDouble(coordinates[1]));
         } else {
             System.out.println("You parsed the wrong attribute!");
         }

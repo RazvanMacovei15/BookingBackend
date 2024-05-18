@@ -11,4 +11,6 @@ public interface HotelService {
     List<Hotel> searchHotels(BigDecimal userLatitude,
                              BigDecimal userLongitude,
                              BigDecimal radius);
+
+    List<Hotel> getAllHotels();
 }
