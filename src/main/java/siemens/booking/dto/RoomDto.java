@@ -11,10 +11,15 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @EqualsAndHashCode
-@ToString
+
 public class RoomDto {
     private Long id;
     private RoomType type;
     private int number;
     private BigDecimal price;
+
+    @Override
+    public String toString() {
+        return id+". room number: "+ number + ", price: " + price + "RON";
+    }
 }

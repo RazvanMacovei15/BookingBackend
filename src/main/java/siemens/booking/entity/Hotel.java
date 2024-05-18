@@ -31,4 +31,9 @@ public class Hotel {
     private List<Feedback> feedbacks;
     @Column(name = "checkInTime")
     private LocalTime checkInTime;
+
+    @Override
+    public String toString() {
+        return id + ". " + name;
+    }
 }

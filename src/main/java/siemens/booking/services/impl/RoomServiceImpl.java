@@ -2,6 +2,7 @@ package siemens.booking.services.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import siemens.booking.dto.RoomDto;
 import siemens.booking.entity.Room;
 import siemens.booking.repository.RoomRepository;
 import siemens.booking.services.RoomService;
@@ -23,5 +24,10 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public List<Room> findAvailableRooms(LocalDate startDate, LocalDate endDate, Long hotelId) {
         return roomRepository.findAvailableRooms(startDate, endDate, hotelId );
+    }
+
+    @Override
+    public List<Room> getAllRoomsThatAreAvailable(Long hotelId) {
+        return roomRepository.getAllRoomsThatAreAvailable(hotelId);
     }
 }

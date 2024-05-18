@@ -17,7 +17,6 @@ import java.net.http.HttpResponse;
 @Setter
 @EqualsAndHashCode
 @ToString
-@Component
 public class LocationApi {
 
     private BigDecimal latitude;
@@ -44,19 +43,20 @@ public class LocationApi {
         return response.body();
     }
 
-    public LocationApi getUserCurrentLocation(){
+    public void getUserCurrentLocation(){
         String response  = handleIpInfoHttpResponse();
         String locationCoordinates = getAttribute(response);
         setCoordinates(locationCoordinates);
-        return new LocationApi(latitude, longitude);
     }
 
 
     private void setCoordinates(String str) {
         String[] coordinates = str.split(",");
         if (coordinates.length == 2) {
-            latitude = BigDecimal.valueOf(Double.parseDouble(coordinates[0]));
-            longitude =BigDecimal.valueOf(Double.parseDouble(coordinates[1]));
+            this.latitude = BigDecimal.valueOf(Double.parseDouble(coordinates[0]));
+            System.out.println("Latitude: " + this.latitude);
+            this.longitude =BigDecimal.valueOf(Double.parseDouble(coordinates[1]));
+            System.out.println("Longitude: " + this.longitude);
         } else {
             System.out.println("You parsed the wrong attribute!");
         }

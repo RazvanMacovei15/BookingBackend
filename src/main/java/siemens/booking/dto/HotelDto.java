@@ -8,9 +8,14 @@ import java.time.LocalTime;
 @Builder
 @Getter
 @EqualsAndHashCode
-@ToString
+
 public class HotelDto {
     private final Long id;
     private final String name;
     private final LocalTime checkInTime;
+
+    @Override
+    public String toString() {
+        return id + ". " + name;
+    }
 }

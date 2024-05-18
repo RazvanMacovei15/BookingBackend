@@ -36,4 +36,12 @@ public class RoomController {
                 .map(roomMapper::mapTo)
                 .collect(Collectors.toList());
     }
+
+    @GetMapping("/available")
+    public List<RoomDto> getAllRoomsThatAreAvailable(@RequestParam Long hotelId){
+        List<Room> rooms = roomService.getAllRoomsThatAreAvailable(hotelId);
+        return rooms.stream()
+                .map(roomMapper::mapTo)
+                .collect(Collectors.toList());
+    }
 }

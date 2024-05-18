@@ -63,6 +63,6 @@ public class HotelServiceImpl implements HotelService {
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
         // Distance in kilometers
-        return BigDecimal.valueOf((EARTH_RADIUS * c)*1000);
+        return BigDecimal.valueOf((EARTH_RADIUS * c));
     }
 }

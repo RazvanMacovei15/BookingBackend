@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import siemens.booking.dto.RoomDto;
 import siemens.booking.entity.Room;
 
 import java.time.LocalDate;
@@ -22,4 +23,7 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
     List<Room> findAvailableRooms(@Param("startDate") LocalDate startDate,
                                   @Param("endDate") LocalDate endDate,
                                   @Param("hotelId") Long hotelId);
+
+    @Query("SELECT r.id, r.price,r.number,r.type FROM Room r LEFT JOIN r.hotel h WHERE h.id = :hotelId AND r.isAvailable = true")
+    List<Room> getAllRoomsThatAreAvailable(@Param("hotelId") Long hotelId);
 }
