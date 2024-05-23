@@ -1,14 +1,11 @@
 package siemens.booking.entity;
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Getter
 @Builder
 @EqualsAndHashCode
