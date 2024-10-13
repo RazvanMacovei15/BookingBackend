@@ -40,4 +40,5 @@ public class Hotel {
     public String toString() {
         return id + ". " + name;
     }
+
 }
